@@ -5,7 +5,9 @@ namespace hacaton.Models
 {
 	public class Payroll:BaseEntity
 	{
+		[Required]
         public int EmployeeId { get; set; }
+		public Employees? employees { get; set; }
 		[Required]
 		public decimal Salary { get; set; }
 		public double? Bonus { get; set; }

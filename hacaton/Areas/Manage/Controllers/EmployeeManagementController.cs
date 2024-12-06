@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace hacaton.Areas.Manage.Controllers
 {
+	[Area("Manage")]
 	public class EmployeeManagementController : Controller
 	{
 		private readonly UserManager<AppUser> _userManager;
@@ -50,7 +51,12 @@ namespace hacaton.Areas.Manage.Controllers
 				return View();
 			}
 
+<<<<<<< HEAD
+			await _userManager.AddToRoleAsync(user, UserRole.Member.ToString());
+
+=======
 			await _userManager.AddToRoleAsync(user, UserRole.Employee.ToString());
+>>>>>>> 97291405ef7844f442bb798a8ee3b07f7bfa0fbb
 			return RedirectToAction(nameof(Index), "home");
 		}
 	}
