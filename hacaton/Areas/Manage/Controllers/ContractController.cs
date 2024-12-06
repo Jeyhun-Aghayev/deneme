@@ -4,6 +4,7 @@ using hacaton.Models;
 using hacaton.ViewModels.Contract;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace hacaton.Areas.Manage.Controllers
 {
@@ -12,10 +13,11 @@ namespace hacaton.Areas.Manage.Controllers
 
 	public class ContractController(AppDBContext _context) : Controller
     {
-        public IActionResult Index(int id)
+        public async  Task<IActionResult> Index()
         {
+          var data = await _context.contracts.ToListAsync();
 
-            return View();
+            return View(data);
         }
         [HttpGet]
         public async Task<IActionResult> Create()

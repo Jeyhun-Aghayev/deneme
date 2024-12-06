@@ -1,4 +1,5 @@
-﻿using hacaton.Helpers;
+﻿using hacaton.DataAccess;
+using hacaton.Helpers;
 using hacaton.Models;
 using hacaton.Models.Account;
 using hacaton.ViewModels.Account;
@@ -7,20 +8,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace hacaton.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController: Controller
     {
-
+        AppDBContext db;
         private readonly UserManager<Employees> _userManager;
         private readonly SignInManager<Employees> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<Employees> userManager, SignInManager<Employees> signInManager, RoleManager<IdentityRole> roleManager)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _roleManager = roleManager;
-        }
-        [HttpGet]
+		public AccountController(UserManager<Employees> userManager, SignInManager<Employees> signInManager, RoleManager<IdentityRole> roleManager, AppDBContext db)
+		{
+			_userManager = userManager;
+			_signInManager = signInManager;
+			_roleManager = roleManager;
+			this.db = db;
+		}
+		[HttpGet]
         public IActionResult Register()
         {
             return View();
@@ -116,5 +118,13 @@ namespace hacaton.Controllers
 
             return RedirectToAction(nameof(Index), "Home");
         }
+        //public async Task<IActionResult> PayRoll(string? id)
+        //{
+        //    if (id == null) { return BadRequest(); }
+        //    var data = db.payrolls.Find
+            
+
+
+        //}
     }
 }

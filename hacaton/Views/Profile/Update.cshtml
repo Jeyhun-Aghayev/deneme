@@ -1,0 +1,26 @@
+﻿@using hacaton.ViewModels.Profile
+@model UpdateProfileVM
+<div class="sidebar_content_edit_inputs">
+                    <div class="sidebar_content_edit_inputs_name">
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name"></span>
+                    </div>
+                    <hr />
+                    <div class="sidebar_content_edit_inputs_email">
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email"></span>
+                    </div>
+                    <hr />
+                    <div class="sidebar_content_edit_inputs_password">
+                        <label asp-for="Paswword">Password</label>
+                        <input asp-for="Paswword" class="form-control"/>
+                        <span asp-validation-for="Paswword"></span>
+                    </div>
+                   
+                    <hr />
+                    <div class="sidebar_content_edit_inputs_button">
+                        <button>Edit</button>
+                    </div>
+</div>

@@ -6,7 +6,7 @@ namespace hacaton.Models
 	{
 
 		[Required]
-		public int EmployeeId { get; set; }
+		public string EmployeeId { get; set; }
 		[Required]
 		public string Email { get; set; }
 		[Required]
