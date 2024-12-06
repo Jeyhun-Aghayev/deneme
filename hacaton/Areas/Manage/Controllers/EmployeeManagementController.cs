@@ -50,6 +50,7 @@ namespace hacaton.Areas.Manage.Controllers
 			}
 
 			await _userManager.AddToRoleAsync(user, UserRole.Member.ToString());
+
 			return RedirectToAction(nameof(Index), "home");
 		}
 	}

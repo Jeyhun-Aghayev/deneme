@@ -14,6 +14,5 @@ namespace hacaton.DataAccess
         public DbSet<Department> departments { get; set; }
 
 
-
-    }
+	}
 }
