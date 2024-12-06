@@ -1,8 +1,10 @@
-﻿<section>
+﻿@model GetDashboardVMs
+
+<section>
     <h1 id="dashboard">Dashboard</h1>
     <div class="dashboard-edit">
         <div class="dashboard-user">
-            <img src="./assets/css/images/Redwan logo.png" alt="" />
+            <img src="~/assets/css/images/Redwan logo.png" alt="" />
             <div class="dashboard-text">
                 <h3>Redwan husein</h3>
                 <h3>UI / UX DESIGNER & UX WRITER</h3>
@@ -15,17 +17,16 @@
     </div>
     <h1 id="actions">Quick Actions</h1>
     <div class="actions">
-        <div class="quick-actions"><h5>Apply for Leave</h5></div>
-        <div class="quick-actions"><h5>KPI Goals</h5></div>
-        <div class="quick-actions"><h5>Take Appraisal</h5></div>
-        <div class="quick-actions"><h5>View Payslip</h5></div>
-        <div class="quick-actions"><h5>Update Profile</h5></div>
-        <div class="quick-actions"><h5>Events</h5></div>
+        <div class="quick-actions"><h5>Photo</h5></div>
+        <div class="quick-actions"><h5>Name</h5></div>
+        <div class="quick-actions"><h5>Surname</h5></div>
+        <div class="quick-actions"><h5>Salary</h5></div>
+        <div class="quick-actions"><h5>Bonus</h5></div>
     </div>
 
     <div id="tables">
         <div class="book-open">
-            <img src="./assets/css/images/book-open.png" alt="" />
+            <img src="~/assets/css/images/book-open.png" alt="" />
             <h1 id="table">Leave Application</h1>
         </div>
         <div class="cards">
@@ -61,7 +62,7 @@
             <div class="leave">
                 <h4>Leave History</h4>
                 <div class="filter">
-                    <img src="./assets/css/images/filter.png" alt="">
+                    <img src="~/assets/css/images/filter.png" alt="">
                     <button class="export-btn">Export</button>
                 </div>
             </div>
@@ -79,66 +80,19 @@
                     </tr>
                 </thead>
                 <tbody class="tbody">
+                    @foreach(GetDashboardVM item in Model)
+                    {
+
                     <tr>
-                        <th scope="row">Abenezer kebede</th>
-                        <td>5</td>
-                        <td>22/04/2022</td>
-                        <td>28/04/2022</td>
-                        <td>Sick</td>
-                        <td>Personal</td>
-                        <td>6</td>
-                        <td><button>Actions</button></td>
+                            <td><img src="~/assets/image/@item.Image"></td>
+                        <th scope="row">@item.Name</th>
+                        <td>@item.Surname</td>
+                        <td>@item.Salary</td>
+                        <td>@item.Bonus</td>
+                        
                     </tr>
-                    <tr class="color">
-                        <th scope="row">Abenezer kebede</th>
-                        <td>5</td>
-                        <td>22/04/2022</td>
-                        <td>28/04/2022</td>
-                        <td>Sick</td>
-                        <td>Personal</td>
-                        <td>6</td>
-                        <td><button>Actions</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Abenezer kebede</th>
-                        <td>5</td>
-                        <td>22/04/2022</td>
-                        <td>28/04/2022</td>
-                        <td>Sick</td>
-                        <td>Personal</td>
-                        <td>6</td>
-                        <td><button>Actions</button></td>
-                    </tr>
-                    <tr class="color">
-                        <th scope="row">Abenezer kebede</th>
-                        <td>5</td>
-                        <td>22/04/2022</td>
-                        <td>28/04/2022</td>
-                        <td>Sick</td>
-                        <td>Personal</td>
-                        <td>6</td>
-                        <td><button>Actions</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Abenezer kebede</th>
-                        <td>5</td>
-                        <td>22/04/2022</td>
-                        <td>28/04/2022</td>
-                        <td>Sick</td>
-                        <td>Personal</td>
-                        <td>6</td>
-                        <td><button>Actions</button></td>
-                    </tr>
-                    <tr class="color">
-                        <th scope="row">Abenezer kebede</th>
-                        <td>5</td>
-                        <td>22/04/2022</td>
-                        <td>28/04/2022</td>
-                        <td>Sick</td>
-                        <td>Personal</td>
-                        <td>6</td>
-                        <td><button>Actions</button></td>
-                    </tr>
+                    }
+                    
                 </tbody>
             </table>
         </div>
