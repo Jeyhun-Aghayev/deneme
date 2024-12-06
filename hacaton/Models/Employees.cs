@@ -20,6 +20,7 @@ namespace hacaton.Models
         public IEnumerable<Payroll>? Payrolls { get; set; }
         public IEnumerable<Attendance>? attendances { get; set; }
         public IEnumerable<Contracts>? contracts { get; set; }
+        public Department Department { get; set; }
 
 
     }
