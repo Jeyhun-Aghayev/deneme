@@ -10,8 +10,10 @@ namespace hacaton.DataAccess
         public DbSet<Contracts> contracts { get; set; } 
         public DbSet<Attendance> attendances { get; set; } 
         public DbSet<Payroll> payrolls { get; set; } 
-        public DbSet<VacationRequest> vacationRequests { get; set; } 
-        
-        
+        public DbSet<VacationRequest> vacationRequests { get; set; }
+        public DbSet<Department> departments { get; set; }
+
+
+
     }
 }
