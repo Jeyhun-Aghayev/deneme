@@ -1,4 +1,6 @@
+using hacaton.DataAccess;
 using hacaton.Hubs;
+using Microsoft.EntityFrameworkCore;
 
 namespace hacaton
 {
@@ -7,9 +9,10 @@ namespace hacaton
 		public static void Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<AppDBContext>(opt => { opt.UseSqlServer(builder.Configuration.GetConnectionString("Default")); });
 
-			// Add services to the container.
-			builder.Services.AddControllersWithViews();
+            // Add services to the container.
+            builder.Services.AddControllersWithViews();
 			builder.Services.AddSignalR();
 
 			var app = builder.Build();
