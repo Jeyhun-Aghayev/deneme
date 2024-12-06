@@ -4,7 +4,8 @@ namespace hacaton.Models
 {
 	public class VacationRequest : BaseEntity
 	{
-		public int EmployeeId { get; set; }
+        public Employees employees { get; set; }
+        public int EmployeeId { get; set; }
 		[Required]
 		public DateTime StartDate { get; set; }
 		[Required]

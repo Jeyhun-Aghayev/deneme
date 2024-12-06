@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace hacaton.Areas.Manage.Controllers
 {
+	[Area("Manage")]
 	public class EmployeeManagementController : Controller
 	{
 		private readonly UserManager<AppUser> _userManager;
