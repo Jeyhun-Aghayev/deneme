@@ -1,5 +1,7 @@
 ﻿using hacaton.DataAccess;
+using hacaton.ViewModels.Dashboard;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace hacaton.Controllers
 {
@@ -11,9 +13,19 @@ namespace hacaton.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            List<GetDashboardVM> dashboardVMs = await _context.employess.Select(x =>
+                new GetDashboardVM()
+                {
+                    Name = x.Name,
+                    Salary = x.Salary,
+                    Surname = x.Surname,
+                    Bonus = x.Bonus,
+                    Image = x.Image,
+                }
+                ).ToListAsync();
+            return View(dashboardVMs);
         }
     }
 }
