@@ -1,0 +1,58 @@
+* {
+    font-family: 'Product Sans', sans-serif;
+}
+
+.leave-cards {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .leave-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .leave-cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.leave-card {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.leave-card .days {
+    font-size: 2.25rem;
+    font-weight: bold;
+}
+
+.leave-card .type {
+    font-size: 0.875rem;
+}
+
+.apply-btn {
+    background-color: #fbbf24;
+    color: black;
+    padding: 0.25rem 1.5rem;
+    border-radius: 9999px;
+    border: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.apply-btn:hover {
+    background-color: #fcd34d;
+}

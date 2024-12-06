@@ -1,4 +1,5 @@
 ﻿using hacaton.Helpers;
+using hacaton.Models;
 using hacaton.Models.Account;
 using hacaton.ViewModels.Account;
 using Microsoft.AspNetCore.Identity;
@@ -9,11 +10,11 @@ namespace hacaton.Controllers
     public class AccountController : Controller
     {
 
-        private readonly UserManager<AppUser> _userManager;
-        private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<Employees> _userManager;
+        private readonly SignInManager<Employees> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager)
+        public AccountController(UserManager<Employees> userManager, SignInManager<Employees> signInManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -32,7 +33,7 @@ namespace hacaton.Controllers
             {
                 return View();
             }
-            AppUser user = new AppUser()
+            Employees user = new Employees()
             {
                 Name = registerVm.Name,
                 Email = registerVm.Email,
@@ -64,7 +65,7 @@ namespace hacaton.Controllers
             {
                 return View();
             }
-            AppUser user = await _userManager.FindByNameAsync(loginVm.UsernameOrEmail);
+            Employees user = await _userManager.FindByNameAsync(loginVm.UsernameOrEmail);
             if (user is null)
             {
                 user = await _userManager.FindByEmailAsync(loginVm.UsernameOrEmail);

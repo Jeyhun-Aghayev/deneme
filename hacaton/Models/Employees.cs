@@ -1,17 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace hacaton.Models
 {
-    public class Employees : BaseEntity
-    {
-        [Required, MaxLength(32)]
-        public string Name { get; set; } = null!;
-        [Required, MaxLength(64)]
-        public string Email { get; set; } = null!;
-        [Required, MaxLength(32)]
-        public string Paswword { get; set; } = null!;
+	public class Employees : IdentityUser
+	{
+		public string Name { get; set; }
+        public string Surname { get; set; }
+        public bool RememberMe { get; set; }
+		public int DepartmentId { get; set; }
+        [Required]
+        public string Password { get; set; }
         public string Image { get; set; }
-        public int DepartmentId { get; set; }
         [Required]
         public decimal Salary { get; set; }
         public double Bonus { get; set; }

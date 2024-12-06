@@ -9,6 +9,9 @@ namespace hacaton
 		public static void Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
+
+
+
             builder.Services.AddDbContext<AppDBContext>(opt => { opt.UseSqlServer(builder.Configuration.GetConnectionString("Default")); });
 
             // Add services to the container.
