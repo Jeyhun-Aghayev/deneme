@@ -8,6 +8,9 @@ namespace hacaton.Areas.Manage.Controllers
 		{
 			return View();
 		}
+		public IActionResult Update()
+		{
 
+		}
 	}
 }
