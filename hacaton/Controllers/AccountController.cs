@@ -1,4 +1,5 @@
-﻿using hacaton.DataAccess;
+﻿using hacaton.Areas.Manage.Controllers;
+using hacaton.DataAccess;
 using hacaton.Helpers;
 using hacaton.Models;
 using hacaton.Models.Account;
@@ -22,39 +23,7 @@ namespace hacaton.Controllers
 			_roleManager = roleManager;
 			this.db = db;
 		}
-		[HttpGet]
-        public IActionResult Register()
-        {
-            return View();
-        }
 
-        [HttpPost]
-        public async Task<IActionResult> Register(RegisterVm registerVm)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-            Employees user = new Employees()
-            {
-                Name = registerVm.Name,
-                Email = registerVm.Email,
-                Surname = registerVm.Surname,
-                UserName = registerVm.Username,
-            };
-            var result = await _userManager.CreateAsync(user, registerVm.Password);
-            if (!result.Succeeded)
-            {
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
-                return View();
-            }
-
-            await _userManager.AddToRoleAsync(user, UserRole.Employee.ToString());
-            return RedirectToAction(nameof(Index), "home");
-        }
         [HttpGet]
         public IActionResult Login()
         {
@@ -89,13 +58,16 @@ namespace hacaton.Controllers
                 return View();
             }
             await _signInManager.SignInAsync(user, loginVm.RememberMe);
-
-
-            if (ReturnUrl != null && !ReturnUrl.Contains("Login"))
+            
+				if (User.IsInRole("Admin")) return RedirectToAction("index", "dashboard", new { area = "Manage" });
+				if (User.IsInRole("Employee")) return RedirectToAction("index", "dashboard");
+		
+			/*if (ReturnUrl != null && !ReturnUrl.Contains("Login"))
             {
                 return Redirect(ReturnUrl);
-            }
-            return RedirectToAction(nameof(Index), "Home");
+            }*/
+
+			return RedirectToAction(nameof(Index), "Home");
         }
 
         public async Task<IActionResult> LogOut()

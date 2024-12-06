@@ -22,7 +22,6 @@ namespace hacaton.ViewModels.Account
 		public string Password { get; set; }
 		[DataType(DataType.Password), Compare(nameof(Password))]
 		public string ConfirmPassword { get; set; }
-		[Required]
-		public int DepartmentId { get; set; }
+
 	}
 }

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace hacaton.Areas.Manage.Controllers
 {
 	[Area("Manage")]
-	[Authorize(Roles = "Admin")]
+	//[Authorize(Roles = "Admin")]
 
 	public class EmployeeManagementController : Controller
 	{
@@ -23,12 +23,11 @@ namespace hacaton.Areas.Manage.Controllers
 			_signInManager = signInManager;
 			_roleManager = roleManager;
 		}
-		public IActionResult Index()
+		[HttpGet]
+		public IActionResult Create()
 		{
 			return View();
 		}
-		//public IActionResult Update(){ }
-		//public IActionResult Delete() { }
 
 		[HttpPost]
 		public async Task<IActionResult> Create(RegisterVm registerVm)
@@ -43,7 +42,6 @@ namespace hacaton.Areas.Manage.Controllers
 				Email = registerVm.Email,
 				Surname = registerVm.Surname,
 				UserName = registerVm.Username,
-				DepartmentId = registerVm.DepartmentId,
 			};
 			var result = await _userManager.CreateAsync(user, registerVm.Password);
 			if (!result.Succeeded)
@@ -55,8 +53,8 @@ namespace hacaton.Areas.Manage.Controllers
 				return View();
 			}
 
-			await _userManager.AddToRoleAsync(user, UserRole.Employee.ToString());
-			return RedirectToAction(nameof(Index), "home");
+			await _userManager.AddToRoleAsync(user, UserRole.Admin.ToString());
+			return RedirectToAction(nameof(Index), "Dashboard");
 		}
 	}
 }

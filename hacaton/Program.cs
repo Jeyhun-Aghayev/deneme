@@ -54,12 +54,12 @@ namespace hacaton
 			app.UseAuthentication(); // İstifadəçi doğrulama prosesini aktivləşdiririk
 			app.UseAuthorization();  // İstifadəçinin rolu və icazələrini idarə edirik
 			app.MapControllerRoute(
+				name: "default",
+				pattern: "{controller=Account}/{action=Login}/{id?}");
+			app.MapControllerRoute(
 			name: "areas",
 			pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
 		  );
-			app.MapControllerRoute(
-				name: "default",
-				pattern: "{controller=Account}/{action=Login}/{id?}");
 			app.MapHub<ChatHub>("/chatHub");
 			app.Run();
 		}

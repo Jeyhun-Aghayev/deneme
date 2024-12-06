@@ -5,7 +5,7 @@ namespace hacaton.Models
 	public class Attendance : BaseEntity
 	{
         [Required]
-        public string EmployeeId { get; set; }
+        public string? EmployeeId { get; set; }
         [Required]
         public DateTime Date { get; set; }= DateTime.Now;
         [Required]
@@ -17,6 +17,5 @@ namespace hacaton.Models
         [Required]
         public int TotalHours { get; set; }
         public int? OverTimeHours { get; set; }
-
     }
 }

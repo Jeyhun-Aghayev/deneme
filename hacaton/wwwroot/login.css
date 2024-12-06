@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none !important;
+    list-style: none !important;
+    outline: none !important;
+}
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.photo{
+    width: 100%;
+    position: relative;
+    height: 100vh;
+    background-image: url(./image/login-image.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.photo{
+    display: flex;
+h2{
+    color: white;
+ position: relative;
+ margin-top: 70%;
+ margin-left: 5%;
+}}
+.line-one{
+    /* margin-bottom: 85%; */
+    width: 50px;
+    height: 10px;
+    border-radius: 8px;
+    background-color: orange;
+}
+.line{
+    top: 90%;
+    left: 5%;
+    position: absolute;
+    display: flex;
+}
+.line-two{
+    width: 50px;
+    height: 10px;
+    border-radius: 8px;
+    background-color:white;
+}
+.line-three{
+    width: 50px;
+    height: 10px;
+    border-radius: 8px;
+    background-color:white;
+}
+label{
+    color: #253D90;
+}
+.email{
+    width: 100%;
+    padding: 4px;
+}
+.email:hover{
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+a{
+    color: blue;
+}
+label{
+    color: #253D90;
+}
+.login-page{
+    
+    /* width: 100%; */
+    display: flex;
+    align-items: center;
+}
+.reset{
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-around;
+}
+.sign{
+    background-color: #253D90;
+    width: 100%;
+    margin-top: 8%;
+    color: white;
+    padding: 5px ;
+}
+
+
+    

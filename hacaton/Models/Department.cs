@@ -6,6 +6,6 @@ namespace hacaton.Models
 	{
 		[Required]
         public string Name { get; set; }
-        public IEnumerable<Employees> employees { get; set; }
+        public IEnumerable<Employees>? employees { get; set; }
     }
 }

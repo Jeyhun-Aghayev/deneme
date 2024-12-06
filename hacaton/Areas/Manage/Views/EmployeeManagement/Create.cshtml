@@ -1,0 +1,93 @@
+﻿@using hacaton.ViewModels.Account
+@model RegisterVm;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="~/assets/register.css" />
+    <title>Register Page</title>
+</head>
+
+<body>
+    <section id="register">
+        <div class="container">
+            <div class="row">
+                <div class="col col-sm-12 col-md-12 col-lg-6">
+                    <div class="management">
+                        <div class="logo d-flex justify-content-start">
+                            <img src="~/image/xceltech-high-resolution-logo-transparent 1.png"
+                                 alt="" />
+                        </div>
+                        <div class="content">
+                            <h2 style="font-weight: bold">HR Management Platform</h2>
+                            <div class="line"></div>
+                            <p class="text">
+                                Manage all employees, payrolls, and other human <br />
+                                resource operations.
+                            </p>
+                            <div class="buttons">
+                                <button class="btn btn-warning learn-more">Learn More</button>
+                                <button class="features">Our Features</button>
+                            </div>
+                        </div>
+                        <div class="hr-container"></div>
+                    </div>
+                </div>
+                <div class="col col-sm-12 col-md-12 col-lg-6">
+                    <div class="register">
+                        <h1 class="my-2" style="color: blue; font-weight: bold">
+                            Welcome to XCELTECH
+                        </h1>
+                        <p class="mt-3" style="color: gray">Register your account</p>
+                        <form method="post">
+                            <div class="input-list">
+                                <div class="inputs">
+                                    <div class="label">
+                                        <label asp-for="Name">Name</label>
+                                        <input asp-for="Name" type="text" />
+                                    </div>
+                                    <div class="label">
+                                        <label asp-for="Surname" for="">Surname</label> <input asp-for="Surname" type="text" />
+                                    </div>
+                                </div>
+                                <div class="inputs">
+                                    <div class="label">
+                                        <label asp-for="Email">Email Adress</label> <input asp-for="Email" type="email" />
+                                    </div>
+                                    <div class="label">
+                                        <label asp-for="Username">Username</label> <input asp-for="Username" type="text" />
+                                    </div>
+                                </div>
+                                <div class="inputs">
+                                    <div class="label">
+                                        <label asp-for="Password">Password</label> <input asp-for="Password" type="password" />
+                                    </div>
+
+                                    <div class="label">
+                                        <label asp-for="ConfirmPassword">Confirm Password</label>
+                                        <input asp-for="ConfirmPassword" type="password" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sign-btn my-4">
+                                <button class="create-btn">Create Account</button>
+                            </div>
+                            <span>Already have an account? <a href="#">Log In</a></span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+</body>
+</html>

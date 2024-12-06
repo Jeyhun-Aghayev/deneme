@@ -14,7 +14,16 @@ namespace hacaton.DataAccess
         public DbSet<Payroll> payrolls { get; set; } 
         public DbSet<VacationRequest> vacationRequests { get; set; }
         public DbSet<Department> departments { get; set; }
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			base.OnModelCreating(modelBuilder);
 
+			// Employees və VacationRequests arasında əlaqə təyin edilir
+			modelBuilder.Entity<Employees>()
+				.HasMany(e => e.VacationRequests)  // Bir işçinin bir neçə məzuniyyəti ola bilər
+				.WithOne(v => v.Employee)  // Hər məzuniyyət bir işçiyə aiddir
+				.HasForeignKey(v => v.EmployeeId); // Məzuniyyətin əlaqəsi işçi ilə
+		}
 
 	}
 }

@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 
-[Authorize(Roles = "Admin")]
-
+//[Authorize(Roles = "Admin")]
+[Area("Manage")]
 public class AdminController : Controller
 {
 	private readonly IHubContext<PermissionHub> _hubContext;
