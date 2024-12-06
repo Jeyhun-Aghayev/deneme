@@ -118,13 +118,13 @@ namespace hacaton.Controllers
 
             return RedirectToAction(nameof(Index), "Home");
         }
-        public async Task<IActionResult> PayRoll(string? id)
-        {
-            if (id == null) { return BadRequest(); }
-            var data = db.payrolls.Find
+        //public async Task<IActionResult> PayRoll(string? id)
+        //{
+        //    if (id == null) { return BadRequest(); }
+        //    var data = db.payrolls.Find
             
 
 
-        }
+        //}
     }
 }
