@@ -2,17 +2,18 @@
 
 namespace hacaton.Models
 {
-	public class Employees : BaseEntity
-	{
-        [Required,MaxLength(32)]
+    public class Employees : BaseEntity
+    {
+        [Required, MaxLength(32)]
         public string Name { get; set; } = null!;
-        [Required,MaxLength(64)]
+        [Required, MaxLength(64)]
         public string Email { get; set; } = null!;
-        [Required,MaxLength(32)]
+        [Required, MaxLength(32)]
         public string Paswword { get; set; } = null!;
         [Required]
-        public decimal Salary { get; set; } 
+        public decimal Salary { get; set; }
         public double Bonus { get; set; }
+        public string Image { get; set; }
         public Attendance? Attendance { get; set; }
         public IEnumerable<VacationRequest>? VacationRequests { get; set; }
         public IEnumerable<Payroll>? Payrolls { get; set; }
