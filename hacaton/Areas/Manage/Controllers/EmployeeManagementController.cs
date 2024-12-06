@@ -38,6 +38,7 @@ namespace hacaton.Areas.Manage.Controllers
 				Email = registerVm.Email,
 				Surname = registerVm.Surname,
 				UserName = registerVm.Username,
+				DepartmentId = registerVm.DepartmentId,
 			};
 			var result = await _userManager.CreateAsync(user, registerVm.Password);
 			if (!result.Succeeded)
@@ -49,7 +50,7 @@ namespace hacaton.Areas.Manage.Controllers
 				return View();
 			}
 
-			await _userManager.AddToRoleAsync(user, UserRole.Member.ToString());
+			await _userManager.AddToRoleAsync(user, UserRole.Employee.ToString());
 			return RedirectToAction(nameof(Index), "home");
 		}
 	}
