@@ -1,6 +1,12 @@
-﻿namespace hacaton.ViewModels.Department
+﻿using hacaton.Models;
+using System.ComponentModel.DataAnnotations;
+
+namespace hacaton.ViewModels.Department
 {
     public class DepartmentDeleteVM
     {
+        [Required]
+        public string Name { get; set; }
+        public IEnumerable<Employees> employees { get; set; }
     }
 }
