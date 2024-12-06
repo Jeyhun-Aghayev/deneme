@@ -1,0 +1,83 @@
+* {
+    font-family: 'Product Sans', sans-serif;
+}
+
+.leave-history {
+    margin-top: 2rem;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.history-header h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.history-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.filter-btn {
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.25rem;
+}
+
+.filter-btn:hover {
+    background-color: #f3f4f6;
+}
+
+.export-btn {
+    background-color: #059669;
+    color: white;
+    padding: 0.25rem 1rem;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th {
+    background-color: #f3f4f6;
+    padding: 0.75rem 1.5rem;
+    text-align: left;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4b5563;
+}
+
+td {
+    padding: 1rem 1.5rem;
+    font-size: 0.875rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+tr:hover {
+    background-color: #f9fafb;
+}
+
+.action-btn {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 0.25rem 1rem;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+}

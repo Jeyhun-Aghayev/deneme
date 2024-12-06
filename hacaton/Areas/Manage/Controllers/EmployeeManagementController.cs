@@ -1,4 +1,5 @@
 ﻿using hacaton.Helpers;
+using hacaton.Models;
 using hacaton.Models.Account;
 using hacaton.ViewModels.Account;
 using Microsoft.AspNetCore.Identity;
@@ -9,11 +10,11 @@ namespace hacaton.Areas.Manage.Controllers
 	[Area("Manage")]
 	public class EmployeeManagementController : Controller
 	{
-		private readonly UserManager<AppUser> _userManager;
-		private readonly SignInManager<AppUser> _signInManager;
+		private readonly UserManager<Employees> _userManager;
+		private readonly SignInManager<Employees> _signInManager;
 		private readonly RoleManager<IdentityRole> _roleManager;
 
-		public EmployeeManagementController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager)
+		public EmployeeManagementController(UserManager<Employees> userManager, SignInManager<Employees> signInManager, RoleManager<IdentityRole> roleManager)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
@@ -33,7 +34,7 @@ namespace hacaton.Areas.Manage.Controllers
 			{
 				return View();
 			}
-			AppUser user = new AppUser()
+			Employees user = new Employees()
 			{
 				Name = registerVm.Name,
 				Email = registerVm.Email,
@@ -51,12 +52,7 @@ namespace hacaton.Areas.Manage.Controllers
 				return View();
 			}
 
-<<<<<<< HEAD
-			await _userManager.AddToRoleAsync(user, UserRole.Member.ToString());
-
-=======
 			await _userManager.AddToRoleAsync(user, UserRole.Employee.ToString());
->>>>>>> 97291405ef7844f442bb798a8ee3b07f7bfa0fbb
 			return RedirectToAction(nameof(Index), "home");
 		}
 	}

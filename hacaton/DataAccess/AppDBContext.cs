@@ -1,9 +1,11 @@
 ﻿using hacaton.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace hacaton.DataAccess
 {
-    public class AppDBContext : DbContext
+    public class AppDBContext : IdentityDbContext<Employees>
     {
         public AppDBContext(DbContextOptions<AppDBContext> options) : base(options) { }
         public DbSet<Employees> employess { get; set; }

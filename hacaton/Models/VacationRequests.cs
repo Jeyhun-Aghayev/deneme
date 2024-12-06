@@ -8,11 +8,14 @@ namespace hacaton.Models
         public Employees employees { get; set; }
         public int EmployeeId { get; set; }
 =======
->>>>>>> 0c32af58a61a48184a31888487ab5dca14d92974
+        //<<<<<<< HEAD
+        public Employees employees { get; set; }
+       
+//=======
+//>>>>>>> 0c32af58a61a48184a31888487ab5dca14d92974
+>>>>>>> 3fc5d75921959dcaf176bf5bba12b47166d01261
 		[Required]
-		public int EmployeeId { get; set; } // Hər bir tələbin işçi ilə əlaqələndirilməsi
 
-		[Required]
 		public DateTime StartDate { get; set; } // İcazə başlama tarixi
 
 		[Required]

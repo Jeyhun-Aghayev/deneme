@@ -1,9 +1,12 @@
 ﻿using hacaton.DataAccess;
 using hacaton.Helpers.Extensions;
 using hacaton.Models;
+using hacaton.Models.Account;
 using hacaton.ViewModels.Profile;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Common;
 
 namespace hacaton.Controllers
 {
@@ -11,15 +14,22 @@ namespace hacaton.Controllers
     {
         private readonly AppDBContext _context;
         private readonly IWebHostEnvironment _env;
+		private readonly UserManager<Employees> _userManager;
+		private readonly SignInManager<Employees> _signInManager;
+		private readonly RoleManager<IdentityRole> _roleManager;
 
-        public Profile(AppDBContext context, IWebHostEnvironment env)
+
+		public Profile(AppDBContext context, IWebHostEnvironment env, UserManager<Employees> userManager, SignInManager<Employees> signInManager, RoleManager<IdentityRole> roleManager)
+		{
+			_context = context;
+			_env = env;
+			_userManager = userManager;
+			_signInManager = signInManager;
+			_roleManager = roleManager;
+		}
+		public async Task<IActionResult> Index(string? id)
         {
-            _context = context;
-            _env = env;
-        }
-        public async Task<IActionResult> Index(int? id)
-        {
-            if (id == null || id < 1) return BadRequest();
+            if (id == null ) return BadRequest();
             Employees employee = await _context.employess.FirstOrDefaultAsync(e => e.Id == id);
             if (employee == null) return NotFound();
             GetEmplooyeProfileVM profileVM = new()
@@ -27,31 +37,31 @@ namespace hacaton.Controllers
                 Name = employee.Name,
                 Salary = employee.Salary,
                 Bonus = employee.Bonus,
-                Department = _context.departments.Where(d => d.Id == employee.Id).FirstOrDefault().Name
+                Department = _context.departments.Where(d => d.Id == employee.DepartmentId).FirstOrDefault().Name
 
             };
             return View(profileVM);
         }
-        public async Task<IActionResult> Update(int? id)
+        public async Task<IActionResult> Update(string? id)
         {
-            if (id == null || id < 1) return BadRequest();
+            if (id == null ) return BadRequest();
             Employees employee = await _context.employess.FirstOrDefaultAsync(e => e.Id == id);
             if (employee == null) return NotFound();
+			await _userManager.RemovePasswordAsync(employee);
 
-            UpdateProfileVM profileVM = new()
+			UpdateProfileVM profileVM = new()
             {
                 Name = employee.Name,
                 Email = employee.Email,
-                Paswword = employee.Paswword,
                 Image = employee.Image,
             };
             return View(profileVM);
 
         }
         [HttpPost]
-        public async Task<IActionResult> Update(int? id, UpdateProfileVM profileVM)
+        public async Task<IActionResult> Update(string? id, UpdateProfileVM profileVM)
         {
-            if (id == null || id < 1) return BadRequest();
+            if (id == null ) return BadRequest();
             Employees employee = await _context.employess.FirstOrDefaultAsync(e => e.Id == id);
             if (employee == null) return NotFound();
             if (profileVM.Photo is not null)
@@ -73,7 +83,7 @@ namespace hacaton.Controllers
             }
             employee.Email = profileVM.Email;
             employee.Name = profileVM.Name;
-            employee.Paswword = profileVM.Paswword;
+            employee.Password = profileVM.Paswword;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
