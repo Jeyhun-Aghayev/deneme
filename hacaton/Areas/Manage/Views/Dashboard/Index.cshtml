@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+          integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet" href="./admin-panel.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="./imagess/xceltech-high-resolution-logo-transparent 1.png"
+                 alt="" />
+        </div>
+        <div class="admin">
+            <img src="./imagess/admin logo.png" alt="" />
+            <div class="admin-name">
+                <h3>Aman admin</h3>
+                <p>admin</p>
+            </div>
+        </div>
+        <div class="features">
+            <p>Features</p>
+            <div class="dash">
+                <a href=""><img src="./imagess/dash.png" alt="" /></a>
+                <a href=""><h4>Dashboard</h4></a>
+            </div>
+        </div>
+        <div class="organization">
+            <p>Organization</p>
+            <div class="employe">
+                <img src="./imagess/employe.png" alt="" />
+                <a href=""><h4>Employee Managment</h4></a>
+            </div>
+        </div>
+        <div class="logout">
+            <a href=""><img src="./imagess/logout.png" alt="" /></a>
+            <a href=""><h3>Log Out</h3></a>
+        </div>
+    </div>
+    <div class="container admin-table">
+        <h1 class="user"><i class="fa-solid fa-user fa-xl"></i>Users</h1>
+
+        <div class="leave-cards">
+            <div class="leave-card">
+                <i class="fa-solid fa-envelope fa-rotate-by fa-2xl"
+                   style="--fa-rotate-angle: -12deg"></i>
+                <h1 class="type">4</h1>
+                <p class="apply-btn">Messages</p>
+            </div>
+            <div class="leave-card">
+                <i class="fa-solid fa-book-open fa-2xl" style="color: #e9ecf2"></i>
+                <h1 class="type">8</h1>
+                <p class="apply-btn">Leaves</p>
+            </div>
+            <div class="leave-card">
+                <i class="fa-solid fa-user-group fa-2xl"></i>
+                <h1 class="type">30</h1>
+                <p class="apply-btn">Candidates</p>
+            </div>
+            <div class="leave-card">
+                <i class="fa-regular fa-file-lines fa-2xl"></i>
+                <h1 class="type">2</h1>
+                <p class="apply-btn">Resumes</p>
+            </div>
+        </div>
+        <div class="table-container">
+            <table id="leaveTable">
+                <thead>
+                    <tr>
+                        <th>Name(s)</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Salary</th>
+                        <th>Bonus</th>
+                        <th>Attendance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Table rows will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <style>
+        @@import url("https://fonts.cdnfonts.com/css/product-sans");
+    </style>
+    <script src="adminpanel.js"></script>
+</body>
+</html>
+
+
