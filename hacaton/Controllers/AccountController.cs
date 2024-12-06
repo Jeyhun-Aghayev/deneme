@@ -49,7 +49,7 @@ namespace hacaton.Controllers
                 return View();
             }
 
-            await _userManager.AddToRoleAsync(user, UserRole.Member.ToString());
+            await _userManager.AddToRoleAsync(user, UserRole.Employee.ToString());
             return RedirectToAction(nameof(Index), "home");
         }
         [HttpGet]
