@@ -38,33 +38,41 @@ namespace hacaton.Areas.Manage.Controllers
            await _context.SaveChangesAsync();
             return View();
         }
+    
         [HttpGet]
-        public async Task<IActionResult> Update()
-        {
-            return View();
-        }
-        [HttpPost]
         public async Task<IActionResult> Update(int? id)
         {
             var data = await _context.departments.FindAsync(id);
             if (data is null) { return BadRequest(); }
             DepartmentUpdateVM vm = new DepartmentUpdateVM { Name = data.Name };
             return View(vm);
+
         }
-        [HttpGet]
-        public async Task<IActionResult> Delete()
-        {
-            return View();
-        }
-        [HttpPost]
+		[HttpPost]
+		public async Task<IActionResult> Update(DepartmentUpdateVM vm,int? id)
+		{
+            if (!id.HasValue)
+            {
+                return BadRequest();    
+            }
+            var data = await _context.departments.FindAsync(id);
+            if (data == null) { return NotFound(); }
+            data.Name = vm.Name;
+            await _context.SaveChangesAsync();
+
+
+			return View();
+		}
+		
         public async Task<IActionResult> Delete(int? id)
         {
-            if(!id.HasValue) { return BadRequest(); }
-            var data = await _context.departments.FindAsync(id.Value);
-            if(data is  null) { return NotFound(); }
-           _context.Remove(data);   
-            await _context .SaveChangesAsync();
+            if (!id.HasValue) { return BadRequest(); }
+            var data = await _context.departments.FindAsync(id);
+            data.IsDeleted= true;
+            await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
+       
     }
 }
