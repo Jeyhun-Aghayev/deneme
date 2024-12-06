@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none !important;
+  list-style: none !important;
+  text-decoration: none !important;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.logo img{
+    z-index: 888;
+    color: antiquewhite;
+}
+.line {
+  width: 80px;
+  height: 12px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 20px;
+}
+.text {
+  font-size: 20px;
+  font-weight: 500;
+}
+.learn-more {
+  padding: 8px 30px;
+  font-weight: bold;
+}
+.features {
+  padding: 8px 26px;
+  font-weight: bold;
+  border-radius: 7px;
+}
+.buttons {
+  display: flex;
+  gap: 1.3rem;
+}
+.content {
+  margin-top: 15%;
+  margin-left: 5%;
+  z-index: 889;
+  color: #fff;
+}
+.management {
+  background-image: url(./image/back-image.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100vh;
+}
+.hr-container {
+    background-color: blue;
+    opacity: 30%;
+    top: 0;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  box-sizing: border-box;
+}
+input {
+  width: 25%;
+  padding: 3px 8px;
+  /* width: 30%; */
+}
+input:hover {
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+.check {
+  width: 5%;
+}
+label {
+  color: #253d90;
+}
+
+.create-btn {
+  background-color: #253d90;
+  padding: 8px 38px;
+  color: white;
+}
+.create-btn:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}

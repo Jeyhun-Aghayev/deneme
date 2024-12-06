@@ -2,7 +2,7 @@
 
 namespace hacaton.Models.Account
 {
-	public class AppUser : IdentityUser
+	public class AppUser 
 	{
 		public string Name { get; set; }
 		public string Surname { get; set; }

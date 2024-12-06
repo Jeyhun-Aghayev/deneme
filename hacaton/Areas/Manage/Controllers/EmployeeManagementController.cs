@@ -2,12 +2,15 @@
 using hacaton.Models;
 using hacaton.Models.Account;
 using hacaton.ViewModels.Account;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace hacaton.Areas.Manage.Controllers
 {
 	[Area("Manage")]
+	[Authorize(Roles = "Admin")]
+
 	public class EmployeeManagementController : Controller
 	{
 		private readonly UserManager<Employees> _userManager;

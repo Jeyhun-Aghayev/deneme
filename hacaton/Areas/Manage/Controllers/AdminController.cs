@@ -1,8 +1,11 @@
 ﻿using hacaton.DataAccess;
 using hacaton.Hubs;
 using hacaton.Services; // EmailService'i daxil edirik
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+
+[Authorize(Roles = "Admin")]
 
 public class AdminController : Controller
 {

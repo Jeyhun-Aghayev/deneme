@@ -1,6 +1,10 @@
-using hacaton.DataAccess;
+﻿using hacaton.DataAccess;
 using hacaton.Hubs;
+using hacaton.Models;
+using hacaton.Models.Account;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace hacaton
 {
@@ -10,12 +14,26 @@ namespace hacaton
 		{
 			var builder = WebApplication.CreateBuilder(args);
 
+			builder.Services.AddIdentity<Employees, IdentityRole>(opt =>
+			{
+				opt.Password.RequireNonAlphanumeric = true;
+				opt.Password.RequiredLength = 8;
+				opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(3);
+				opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789._";
+				opt.Lockout.MaxFailedAccessAttempts = 3;
+			}).AddEntityFrameworkStores<AppDBContext>().AddDefaultTokenProviders();
 
 
-            builder.Services.AddDbContext<AppDBContext>(opt => { opt.UseSqlServer(builder.Configuration.GetConnectionString("Default")); });
+			builder.Services.AddControllersWithViews();
+			builder.Services.AddDbContext<AppDBContext>(opt =>
+			{
+				opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
+			});
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
+		
+			
+			// Add services to the container.
+			builder.Services.AddControllersWithViews();
 			builder.Services.AddSignalR();
 
 			var app = builder.Build();
@@ -33,14 +51,15 @@ namespace hacaton
 
 			app.UseRouting();
 
-			app.UseAuthorization();
+			app.UseAuthentication(); // İstifadəçi doğrulama prosesini aktivləşdiririk
+			app.UseAuthorization();  // İstifadəçinin rolu və icazələrini idarə edirik
 			app.MapControllerRoute(
 			name: "areas",
-			pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+			pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
 		  );
 			app.MapControllerRoute(
 				name: "default",
-				pattern: "{controller=Home}/{action=Index}/{id?}");
+				pattern: "{controller=Account}/{action=Login}/{id?}");
 			app.MapHub<ChatHub>("/chatHub");
 			app.Run();
 		}

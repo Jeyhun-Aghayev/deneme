@@ -1,13 +1,15 @@
 ﻿using hacaton.DataAccess;
 using hacaton.Models;
 using hacaton.ViewModels.Department;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace hacaton.Areas.Manage.Controllers
 {
     [Area("Manage")]
-    public class DepartmentController(AppDBContext _context) : Controller
+	[Authorize(Roles ="Admin")]
+	public class DepartmentController(AppDBContext _context) : Controller
     {
         public IActionResult Index(int id)
         {
