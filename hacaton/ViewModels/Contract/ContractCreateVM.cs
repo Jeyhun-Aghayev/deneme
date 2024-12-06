@@ -1,24 +1,21 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace hacaton.Models
+namespace hacaton.ViewModels.Contract
 {
-	public class Contracts : BaseEntity
+	public class ContractCreateVM
 	{
-
 		[Required]
 		public int EmployeeId { get; set; }
 		[Required]
 		public string Email { get; set; }
 		[Required]
 		public DateTime StartDate { get; set; }
-			[Required]
+		[Required]
 		public DateTime EndDate { get; set; }
 		[Required]
 		public Decimal HorkyRate { get; set; }
-	    [Required]
+		[Required]
 		public int MonthlyMaxHours { get; set; }
 		public double? BonusPercentage { get; set; }
-		
-
 	}
 }

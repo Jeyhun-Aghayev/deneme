@@ -2,6 +2,7 @@
 
 namespace hacaton.Areas.Manage.Controllers
 {
+	[Area("Manage")]
 	public class DashboardController : Controller
 	{
 		public IActionResult Index()
