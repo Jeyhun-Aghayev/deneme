@@ -10,6 +10,7 @@ namespace hacaton.Models
         public string Email { get; set; } = null!;
         [Required,MaxLength(32)]
         public string Paswword { get; set; } = null!;
+        public string DepartmentId { get; set; }
         [Required]
         public decimal Salary { get; set; } 
         public double Bonus { get; set; }
